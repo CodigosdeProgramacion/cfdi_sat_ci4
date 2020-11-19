@@ -1,0 +1,13 @@
+Instalar OpenSSL
+Abrir el CMD o termina en la ubicación de la carpeta bin de la instalación de OpenSSL
+Copiar el CSD a la carpeta bin y ejecutar los siguientes comandos cambiando el nombe del CSD
+
+openssl x509 -inform der -in certificado.cer -out certificado.cer.pem
+
+openssl pkcs8 -inform DER -in certificado.key -out certificado.key.pem
+
+openssl x509 -in certificado.cer.pem -subject -issuer -serial -noout
+
+3330303031303030303030343030303032333231
+
+30001000000400002321
