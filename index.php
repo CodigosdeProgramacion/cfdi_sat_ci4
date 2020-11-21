@@ -12,13 +12,12 @@
 	
 	date_default_timezone_set('America/Mexico_City');
 	
-	include('satxmlsv33.php');
-	include('timbra.php');
-	
 	$datosFactura = array();
 	
-	$dirCfdi = 'cfdi/';
-	$dirXML = 'tmp/';
+	$dirCfdi = APPPATH . 'Libraries/cfdi_sat/cfdi/';
+	$dir = APPPATH . 'Libraries/cfdi_sat/';
+	
+	$nombre = "A1";
 	
 	//Datos generales de factura
 	$datosFactura["version"] = "3.3";
@@ -52,14 +51,16 @@
 	$datosFactura['traslados']['tasa'] = "0.160000";
 	$datosFactura['traslados']['importe'] = "160.00";
 	
-	$xmlBase = satxmlsv33($datosFactura, '', $dirXML, '');	
+	$xml = new \GeneraXML();
+	$xmlBase = $xml->satxmlsv33($datosFactura, '', $dir, '');	
 	
-	$timbra = new Pac();
+	$timbra = new \Pac();
 	$cfdi = $timbra->enviar("UsuarioPruebasWS","b9ec2afa3361a59af4b4d102d3f704eabdf097d4","TCM970625MB1", $xmlBase);
 	
 	if($xml)
 	{
-		file_put_contents($dirCfdi.'A1.xml', base64_decode($cfdi->xml));
+		file_put_contents($dirCfdi.$nombre'.xml', base64_decode($cfdi->xml));
+		unlink($dirXML.$nombre'.xml');
 	}
 	
 ?>
