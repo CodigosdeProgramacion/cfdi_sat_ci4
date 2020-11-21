@@ -1,13 +1,15 @@
 Instalar OpenSSL
-Abrir el CMD o termina en la ubicación de la carpeta bin de la instalación de OpenSSL
+Abrir el CMD o termina en la ubicación de la carpeta bin de la instalación de OpenSSL (Como administrador)
 Copiar el CSD a la carpeta bin y ejecutar los siguientes comandos cambiando el nombe del CSD
 
-openssl x509 -inform der -in certificado.cer -out certificado.cer.pem
+openssl x509 -inform der -in CSD_Pruebas_CFDI_TCM970625MB1.cer -out CSD_Pruebas_CFDI_TCM970625MB1.cer.pem
 
-openssl pkcs8 -inform DER -in certificado.key -out certificado.key.pem
+openssl pkcs8 -inform DER -in CSD_Pruebas_CFDI_TCM970625MB1.key -out CSD_Pruebas_CFDI_TCM970625MB1.key.pem
+Escribir contraseña
 
-openssl x509 -in certificado.cer.pem -subject -issuer -serial -noout
+openssl x509 -in CSD_Pruebas_CFDI_TCM970625MB1.cer.pem -serial -noout
+serial=3230303031303030303030333030303232373632
 
-3330303031303030303030343030303032333231
+Eliminamos los números en posiciones impares 1, 3, 5...
 
-30001000000400002321
+20001000000300022762

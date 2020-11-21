@@ -1,0 +1,25 @@
+Instalación, configuración e implementación
+
+Copiar carpeta cfdi_sat en CodeIngiter en la dirección app/Libraries/
+
+Agregar en la clase app/Config/Autoload.php en el arreglo $classmap lo siguiente:
+
+'GeneraXML' => APPPATH . 'Libraries/cfdi_sat/satxmlsv33.php',
+'Pac' => APPPATH . 'Libraries/cfdi_sat/timbra.php',
+
+El resultado sería:
+
+public $classmap = [
+	'GeneraXML' => APPPATH . 'Libraries/cfdi_sat/satxmlsv33.php',
+	'Pac' => APPPATH . 'Libraries/cfdi_sat/timbra.php',
+];
+
+Para llamar la clase GeneraXML y Pac:
+
+$xml = new \GeneraXML();
+$xml->satxmlsv33(parametros...);
+
+$timbrado = new \Pac();
+$timbrado->enviar(parametros...);
+
+Para más información de parámetros a enviar revisar index.php
